@@ -8,8 +8,8 @@ HEADER		= ft_printf.h
 
 SRC_FILES	= ft_printfprova
 
-SRC 		= $(addsuffix .c, $(SRC_FILES))
-OBJ 		= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+SRC 		= ft_printf.c ft_printf_utils.c
+OBJ 		= $(SRC:.c=.o)
 
 all:		$(NAME)
 
@@ -17,15 +17,15 @@ $(NAME):	$(OBJ)
 			@$(AR) $(NAME) $(OBJ)
 			# @echo "ft_printf compiled!"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "Compiling: $<"
-			@$(CC) $(CFLAGS) $< -o $@
+# $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
+# 			@echo "Compiling: $<"
+# 			@$(CC) $(CFLAGS) $< -o $@
 
-$(OBJF):
-			@mkdir -p $(OBJ_DIR)
+# $(OBJF):
+# 			@mkdir -p $(OBJ_DIR)
 
 clean:
-			@$(RM) -rf $(OBJ_DIR)
+			@$(RM) -rf $(OBJ)
 			@echo "ft_printf object files cleaned!"
 
 fclean:		clean
